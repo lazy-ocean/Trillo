@@ -14,6 +14,9 @@
     justify-content: center;
     align-items: center;
 
+    position: relative;
+    flex-wrap: wrap;
+
     @media only screen and (max-width: $bp-smallest) {
         order: 1; //so it moves all the way to the end
         flex: 0 0 100%;
@@ -67,6 +70,59 @@
         width: 2rem;
         fill: var(--color-grey-dark-3);
     }
+
+//////////////
+// SEARCH SUGGESTIONS
+    &:hover > &__suggestions {
+        visibility: visible;
+        box-shadow: var(--shadow-light);
+    }
+
+    &__suggestions {
+        visibility: hidden;
+        position: absolute;
+        top: 100%;
+        z-index: 1000;
+        width: 101%;
+        background-color: #fff;
+    }
+
+    &__suggestions-list {
+        list-style-type: none;
+    }
+
+    &__suggestion {
+        padding: 2rem;
+        transition: background-color .2s, color .2s;
+        cursor: pointer;
+    }
+
+    &__suggestion:hover {
+        background-color: var(--color-primary-light-transparent);
+    }
+
+    &__suggestion:active {
+        background-color: var(--color-primary-light);
+    }
+
+    &__suggestion:active > &__suggestion-link {
+        color: #fff;
+    }
+
+    &__suggestion:first-child {
+        border-top: 1.8rem solid #fff;
+    }
+
+    &__suggestion-link {
+        text-decoration: none;
+        color: var(--color-grey-dark-1);
+        font-size: 1.4rem;
+
+        & span {
+            font-style: italic;
+        }
+    }
+
 }
 
 //////////
@@ -122,6 +178,130 @@
         height: 3.75rem;
         border-radius: 50%;
         margin-right: 1rem;
+    }
+
+    //////////////
+    //HOVERING USER MENU
+
+    &__user {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__user:hover > &__user-menu {
+        visibility: visible;
+        box-shadow: var(--shadow-dark);
+    }
+
+    &__user-menu {
+        position: absolute;
+        list-style-type: none;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        visibility: hidden;
+        background-color: #FFF;
+        z-index: 1000;
+        
+        font-size: 1.3rem;
+    }
+
+    &__user-item {
+        padding: 1.3rem;
+        transition: background-color .2s, color .2s;
+    }
+
+    &__user-item:hover {
+        background-color: var(--color-primary-light-transparent);
+    }
+
+    &__user-item:active {
+        background-color: var(--color-primary-light);
+
+        & * {
+            color: #fff;
+            fill: #fff;
+        }
+    }
+
+    &__user-menu a {
+        text-decoration: none;
+        color: var(--color-grey-dark-1);
+
+        display: flex;
+        align-items: center;
+    }
+
+    &__user-icon {
+        fill: var(--color-grey-dark-1);
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-right: 0.7rem;
+    }
+
+//////////////
+//HOVERING CHAT 
+
+    &__icon-chat {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__icon-chat:hover > &__chat {
+        visibility: visible;
+        box-shadow: var(--shadow-dark);
+    }
+
+    &__chat {
+        visibility: hidden;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 450%;
+        background-color: #fff;
+
+        display: flex;
+        flex-direction: column;
+
+        z-index: 1000;
+    }
+
+    &__chat-item {
+        list-style-type: none;
+        padding: 1rem;
+        text-decoration: none;
+        color: inherit;
+
+        display: flex;
+        align-items: center;
+        transition: background-color .2s;
+    }
+
+    &__chat-item:hover {
+        background-color: var(--color-primary-light-transparent);
+    }
+
+    &__chat-item:active {
+        background-color: var(--color-primary-light-transparent-dark);
+    }
+
+    &__chat-photo {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        margin-right: 1.5rem;
+    }
+
+    &__chat-name {
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: var(--color-primary);
+    }
+
+    &__chat-message {
+        font-size: 1.2rem;
     }
 
 }
